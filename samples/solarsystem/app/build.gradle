@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 27
@@ -31,7 +32,7 @@ android {
              * devices and x86 to run on the emulator. Your application should
              * list the ABIs most appropriate to minimize APK size (arm64-v8a recommended).
              */
-            abiFilters 'arm64-v8a','x86'
+            abiFilters 'arm64-v8a', 'x86'
         }
     }
     compileOptions {
@@ -51,9 +52,11 @@ android {
 }
 
 dependencies {
-  implementation "com.google.ar.sceneform:core:1.5.1"
-  implementation "com.android.support:appcompat-v7:27.1.1"
-  implementation "com.android.support:design:27.1.1"
+    implementation "com.google.ar.sceneform:core:1.5.1"
+    implementation "com.google.ar.sceneform.ux:sceneform-ux:1.5.1"
+    implementation "com.android.support:appcompat-v7:27.1.1"
+    implementation "com.android.support:design:27.1.1"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 
 apply plugin: 'com.google.ar.sceneform.plugin'
@@ -108,3 +111,6 @@ sceneform.asset('sampledata/models/Venus/Venus.gltf',
         'default',
         'sampledata/models/Venus/Venus.sfa',
         'src/main/assets/Venus')
+repositories {
+    mavenCentral()
+}
